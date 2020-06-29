@@ -13,8 +13,15 @@
 
   <body>
 
+    <!-- 全ページにナビバーを追加 -->
+    <%= render "shared/header" %>
+    <!-- ログイン関連ページ以外にフラッシュ表示部分を追加 -->
+    <% if controller_name == "graphs" %>
+      <%= render "shared/flash_messages" %>
+    <% end %>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    
+
     <div class="graph-contaioner">
     <%= yield %>
     </div>
