@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>体重管理アプリ</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+<head>
+  <title>体重管理アプリ</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<body>
+  <!-- 全ページにナビバーを追加 -->
+  <%= render 'shared/header' %>
+  <!-- ログイン関連ページ以外にフラッシュ表示部分を追加 -->
+  <% if controller_name == 'graphs' %>
+  <%= render 'shared/flash_messages' %>
+  <% end %>
 
-  <body>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-    <!-- 全ページにナビバーを追加 -->
-    <%= render "shared/header" %>
-    <!-- ログイン関連ページ以外にフラッシュ表示部分を追加 -->
-    <% if controller_name == "graphs" %>
-      <%= render "shared/flash_messages" %>
-    <% end %>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-    <div class="graph-contaioner">
+  <div class="graph-container">
     <%= yield %>
-    </div>
-  </body>
+  </div>
+</body>
 </html>
